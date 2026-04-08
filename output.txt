@@ -1,0 +1,171 @@
+======================================================================
+   DISK SCHEDULING SIMULATION
+   Cylinders: 0 – 199  |  Algorithms: FCFS, SSTF, SCAN
+======================================================================
+
+======================================================================
+Case 1 – Standard request queue
+  Initial head : 53
+  Direction    : right
+  Requests     : [98, 183, 37, 122, 14, 124, 65, 67]
+======================================================================
+
+--- FCFS ---
+  Service order : 98, 183, 37, 122, 14, 124, 65, 67
+  Head path     : 53 -> 98 -> 183 -> 37 -> 122 -> 14 -> 124 -> 65 -> 67
+  Steps         :
+    53 -> 98 (dist: 45)
+    98 -> 183 (dist: 85)
+    183 -> 37 (dist: 146)
+    37 -> 122 (dist: 85)
+    122 -> 14 (dist: 108)
+    14 -> 124 (dist: 110)
+    124 -> 65 (dist: 59)
+    65 -> 67 (dist: 2)
+  Total movement: 640 cylinders
+  Avg seek dist : 80.00 cylinders
+
+--- SSTF ---
+  Service order : 65, 67, 37, 14, 98, 122, 124, 183
+  Head path     : 53 -> 65 -> 67 -> 37 -> 14 -> 98 -> 122 -> 124 -> 183
+  Steps         :
+    53 -> 65 (dist: 12)
+    65 -> 67 (dist: 2)
+    67 -> 37 (dist: 30)
+    37 -> 14 (dist: 23)
+    14 -> 98 (dist: 84)
+    98 -> 122 (dist: 24)
+    122 -> 124 (dist: 2)
+    124 -> 183 (dist: 59)
+  Total movement: 236 cylinders
+  Avg seek dist : 29.50 cylinders
+
+--- SCAN ---
+  Service order : 65, 67, 98, 122, 124, 183, 37, 14
+  Head path     : 53 -> 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 199 -> 37 -> 14
+  Steps         :
+    53 -> 65 (dist: 12)
+    65 -> 67 (dist: 2)
+    67 -> 98 (dist: 31)
+    98 -> 122 (dist: 24)
+    122 -> 124 (dist: 2)
+    124 -> 183 (dist: 59)
+    183 -> 199 [end of disk, dist: 16]
+    199 -> 37 (dist: 162)
+    37 -> 14 (dist: 23)
+  Total movement: 331 cylinders
+  Avg seek dist : 41.38 cylinders
+
+======================================================================
+Case 2 – Clustered requests
+  Initial head : 50
+  Direction    : right
+  Requests     : [45, 48, 52, 90, 150, 160]
+======================================================================
+
+--- FCFS ---
+  Service order : 45, 48, 52, 90, 150, 160
+  Head path     : 50 -> 45 -> 48 -> 52 -> 90 -> 150 -> 160
+  Steps         :
+    50 -> 45 (dist: 5)
+    45 -> 48 (dist: 3)
+    48 -> 52 (dist: 4)
+    52 -> 90 (dist: 38)
+    90 -> 150 (dist: 60)
+    150 -> 160 (dist: 10)
+  Total movement: 120 cylinders
+  Avg seek dist : 20.00 cylinders
+
+--- SSTF ---
+  Service order : 48, 45, 52, 90, 150, 160
+  Head path     : 50 -> 48 -> 45 -> 52 -> 90 -> 150 -> 160
+  Steps         :
+    50 -> 48 (dist: 2)
+    48 -> 45 (dist: 3)
+    45 -> 52 (dist: 7)
+    52 -> 90 (dist: 38)
+    90 -> 150 (dist: 60)
+    150 -> 160 (dist: 10)
+  Total movement: 120 cylinders
+  Avg seek dist : 20.00 cylinders
+
+--- SCAN ---
+  Service order : 52, 90, 150, 160, 48, 45
+  Head path     : 50 -> 52 -> 90 -> 150 -> 160 -> 199 -> 48 -> 45
+  Steps         :
+    50 -> 52 (dist: 2)
+    52 -> 90 (dist: 38)
+    90 -> 150 (dist: 60)
+    150 -> 160 (dist: 10)
+    160 -> 199 [end of disk, dist: 39]
+    199 -> 48 (dist: 151)
+    48 -> 45 (dist: 3)
+  Total movement: 303 cylinders
+  Avg seek dist : 50.50 cylinders
+
+======================================================================
+Case 3 – Fairness challenge
+  Initial head : 15
+  Direction    : right
+  Requests     : [10, 12, 14, 16, 100, 102]
+======================================================================
+
+--- FCFS ---
+  Service order : 10, 12, 14, 16, 100, 102
+  Head path     : 15 -> 10 -> 12 -> 14 -> 16 -> 100 -> 102
+  Steps         :
+    15 -> 10 (dist: 5)
+    10 -> 12 (dist: 2)
+    12 -> 14 (dist: 2)
+    14 -> 16 (dist: 2)
+    16 -> 100 (dist: 84)
+    100 -> 102 (dist: 2)
+  Total movement: 97 cylinders
+  Avg seek dist : 16.17 cylinders
+
+--- SSTF ---
+  Service order : 14, 12, 10, 16, 100, 102
+  Head path     : 15 -> 14 -> 12 -> 10 -> 16 -> 100 -> 102
+  Steps         :
+    15 -> 14 (dist: 1)
+    14 -> 12 (dist: 2)
+    12 -> 10 (dist: 2)
+    10 -> 16 (dist: 6)
+    16 -> 100 (dist: 84)
+    100 -> 102 (dist: 2)
+  Total movement: 97 cylinders
+  Avg seek dist : 16.17 cylinders
+
+--- SCAN ---
+  Service order : 16, 100, 102, 14, 12, 10
+  Head path     : 15 -> 16 -> 100 -> 102 -> 199 -> 14 -> 12 -> 10
+  Steps         :
+    15 -> 16 (dist: 1)
+    16 -> 100 (dist: 84)
+    100 -> 102 (dist: 2)
+    102 -> 199 [end of disk, dist: 97]
+    199 -> 14 (dist: 185)
+    14 -> 12 (dist: 2)
+    12 -> 10 (dist: 2)
+  Total movement: 373 cylinders
+  Avg seek dist : 62.17 cylinders
+
+======================================================================
+   SUMMARY TABLE
+======================================================================
++----------+-----------+---------------------+---------------------+
+| Case     | Algorithm | Total Head Movement |   Avg Seek Distance |
++----------+-----------+---------------------+---------------------+
+| Case 1   | FCFS      |                 640 |               80.00 |
+| Case 1   | SSTF      |                 236 |               29.50 |
+| Case 1   | SCAN      |                 331 |               41.38 |
++----------+-----------+---------------------+---------------------+
+| Case 2   | FCFS      |                 120 |               20.00 |
+| Case 2   | SSTF      |                 120 |               20.00 |
+| Case 2   | SCAN      |                 303 |               50.50 |
++----------+-----------+---------------------+---------------------+
+| Case 3   | FCFS      |                  97 |               16.17 |
+| Case 3   | SSTF      |                  97 |               16.17 |
+| Case 3   | SCAN      |                 373 |               62.17 |
++----------+-----------+---------------------+---------------------+
+

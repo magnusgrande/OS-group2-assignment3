@@ -23,8 +23,5 @@
 hs_err_pid*
 replay_pid*
 
-# Generated simulation output
-output.txt
-
 # Compiled output directory
 out/
