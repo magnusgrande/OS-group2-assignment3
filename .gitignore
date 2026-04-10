@@ -25,3 +25,6 @@ replay_pid*
 
 # Compiled output directory
 out/
+
+# VSCode
+.vscode/
