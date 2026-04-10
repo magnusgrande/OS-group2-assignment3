@@ -66,6 +66,8 @@ The program prints results to the console **and** writes the same output to
 
 ## Sample summary table
 
+❗ Note: Not actual valid data
+
 ```markdown
 +----------+-----------+---------------------+---------------------+
 | Case     | Algorithm | Total Head Movement |   Avg Seek Distance |
@@ -83,3 +85,12 @@ The program prints results to the console **and** writes the same output to
 | Case 3   | SCAN      |                 373 |               62.17 |
 +----------+-----------+---------------------+---------------------+
 ```
+
+## Contributors
+
+- Ida Soldal
+- Magnus Grande
+- Maher Mahoued
+- Mona Amundsen
+
+🤖AI usage note: Most features were implemented by an AI agent - All code was manually reviewed and accepted by the entire group
