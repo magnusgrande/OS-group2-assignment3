@@ -1,4 +1,5 @@
 # OS-group2-assignment3
+
 IDATA2305 Operating Systems – Group 2 – Assignment 3 – Spring 2026 – NTNU Ålesund
 
 ## Overview
@@ -17,13 +18,13 @@ Java simulation of three disk scheduling algorithms:
 
 ## Project structure
 
-```
+```text
 src/diskscheduler/
     Main.java               – entry point; test cases and output formatting
     SchedulingResult.java   – immutable result container
-    FCFSScheduler.java      – FCFS algorithm
-    SSTFScheduler.java      – SSTF algorithm
-    SCANScheduler.java      – SCAN (elevator) algorithm
+    FcfsScheduler.java      – FCFS algorithm
+    SstfScheduler.java      – SSTF algorithm
+    ScanScheduler.java      – SCAN (elevator) algorithm
 ```
 
 ---
@@ -31,6 +32,7 @@ src/diskscheduler/
 ## How to run
 
 ### Requirements
+
 - Java Development Kit (JDK) 11 or later
 - A terminal in the repository root directory
 
@@ -64,7 +66,7 @@ The program prints results to the console **and** writes the same output to
 
 ## Sample summary table
 
-```
+```markdown
 +----------+-----------+---------------------+---------------------+
 | Case     | Algorithm | Total Head Movement |   Avg Seek Distance |
 +----------+-----------+---------------------+---------------------+
